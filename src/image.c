@@ -3,15 +3,20 @@
 #include "image.h"
 
 void image_free(Image *image) {
-	free((void*)image->data);
+	stbi_image_free((void*)image->data);
 }
 
-bool image_load(Image *image, const char *path, const int target_width) {
+bool image_load(Image *image, const char *path, int target_width) {
 	image->data = stbi_load(path, &image->width, &image->height, &image->channels, 0);
 
 	if(image->data == NULL) {
 		fprintf(stderr, "Failed to load image: %s\n", stbi_failure_reason());
 		return false;
+	}
+
+	if(image->width <= target_width) {
+		target_width = image->width;
+		fprintf(stderr, "Source image is smaller than requested width!\n");
 	}
 
 	const int target_height = image->height / (image->width / (float)target_width);
