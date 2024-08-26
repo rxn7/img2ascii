@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/rxn/dev/img2ascii/build/win/release",
+  "command": "/usr/bin/x86_64-w64-mingw32-gcc -I/home/rxn/dev/img2ascii/include -D_FORTIFY_SOURCE=3 -D_GLIBCXX_ASSERTIONS -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4 -Wformat -Werror=format-security -fcf-protection -O3 -DNDEBUG -std=gnu2x -o CMakeFiles/img2ascii.dir/src/main.c.obj -c /home/rxn/dev/img2ascii/src/main.c",
+  "file": "/home/rxn/dev/img2ascii/src/main.c",
+  "output": "CMakeFiles/img2ascii.dir/src/main.c.obj"
+}
+]

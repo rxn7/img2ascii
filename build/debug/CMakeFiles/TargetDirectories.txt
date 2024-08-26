@@ -1,0 +1,3 @@
+/home/rxn/dev/img2ascii/build/debug/CMakeFiles/img2ascii.dir
+/home/rxn/dev/img2ascii/build/debug/CMakeFiles/edit_cache.dir
+/home/rxn/dev/img2ascii/build/debug/CMakeFiles/rebuild_cache.dir
