@@ -1,3 +1,4 @@
+#include "debug.h"
 #include "image.h"
 #include "args.h"
 #include "color.h"
@@ -31,16 +32,22 @@ static void print_ansi_256(const char character, const Image *image, const size_
 }
 
 int main(const int argc, const char *argv[]) {
+	const clock_t settings_init_start_time = clock();
 	Settings settings; 
 	if(!settings_init(&settings, argc, argv)) {
 		return 1;
 	}
+
+	if(settings.verbose) {
+		print_time_took("Initializing settings", settings_init_start_time);
+	}
 	
 	Image image;
-	if(!image_load(&image, settings.image_path, settings.target_width)) {
+	if(!image_load(&image, &settings)) {
 		return 1;
 	}
 
+	const clock_t draw_start_time = clock();
 	for(int y = 0; y < image.height; y++) {
 		for(int x = 0; x < image.width; x++) {
 			const size_t idx = y * image.width + x; 
@@ -67,6 +74,10 @@ int main(const int argc, const char *argv[]) {
 			}
 		}
 		printf("\n");
+	}
+
+	if(settings.verbose) {
+		print_time_took("Drawing", draw_start_time);
 	}
 
 	image_free(&image);

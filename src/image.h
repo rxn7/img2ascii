@@ -2,6 +2,7 @@
 
 #include <stb_image.h>
 #include <stb_image_resize2.h>
+#include "args.h"
 
 typedef struct Image {
 	uint8_t *data;
@@ -11,5 +12,5 @@ typedef struct Image {
 } Image;
 
 void image_free(Image *image);
-bool image_load(Image *image, const char *path, int target_width);
+bool image_load(Image *image, Settings *settings);
 uint8_t image_get_pixel_intensity(const Image *image, int index);
