@@ -9,12 +9,12 @@ typedef enum ColorType : uint8_t {
 	TrueColor
 } ColorType;
 
-typedef struct Settings {
+typedef struct Arguments {
 	rf_context_t rf_ctx;
 	const char *image_path;
 	uint8_t target_width;
 	ColorType color_type;
 	bool verbose;
-} Settings;
+} Arguments;
 
-bool settings_init(Settings *settings, int argc, const char *argv[]);
+bool args_init(Arguments *args, int argc, const char *argv[]);

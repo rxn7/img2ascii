@@ -32,18 +32,18 @@ static void print_ansi_256(const char character, const Image *image, const size_
 }
 
 int main(const int argc, const char *argv[]) {
-	const clock_t settings_init_start_time = clock();
-	Settings settings; 
-	if(!settings_init(&settings, argc, argv)) {
+	const clock_t args_init_start_time = clock();
+	Arguments args; 
+	if(!args_init(&args, argc, argv)) {
 		return 1;
 	}
 
-	if(settings.verbose) {
-		print_time_took("Initializing settings", settings_init_start_time);
+	if(args.verbose) {
+		print_time_took("Initializing args", args_init_start_time);
 	}
 	
 	Image image;
-	if(!image_load(&image, &settings)) {
+	if(!image_load(&image, &args)) {
 		return 1;
 	}
 
@@ -58,7 +58,7 @@ int main(const int argc, const char *argv[]) {
 			// Usually monospace fonts have 1:2 ratio
 			// TODO: optimize this if needed
 			for(int i = 0; i < 2; i++) {
-				switch(settings.color_type) {
+				switch(args.color_type) {
 					case NoColor:
 						putchar(character);
 						break;
@@ -76,7 +76,7 @@ int main(const int argc, const char *argv[]) {
 		printf("\n");
 	}
 
-	if(settings.verbose) {
+	if(args.verbose) {
 		print_time_took("Drawing", draw_start_time);
 	}
 
