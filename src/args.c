@@ -30,7 +30,7 @@ bool settings_init(Settings *settings, int argc, const char *argv[]) {
 	} else if(strcmp(color_flag->value.as_str, "ansi") == 0) {
 		settings->color_type = Ansi256;
 	} else {
-		settings->color_type = Ansi256;
+		settings->color_type = NoColor;
 	}
 
 	settings->verbose = verbose_flag->value.as_bool;
