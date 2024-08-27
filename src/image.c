@@ -14,7 +14,7 @@ bool image_load(Image *image, const char *path, int target_width) {
 		return false;
 	}
 
-	if(image->width <= target_width) {
+	if(target_width > image->width) {
 		target_width = image->width;
 		fprintf(stderr, "Source image is smaller than requested width!\n");
 	}

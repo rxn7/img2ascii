@@ -11,5 +11,5 @@ typedef struct Image {
 } Image;
 
 void image_free(Image *image);
-bool image_load(Image *image, const char *path, const int target_width);
-uint8_t image_get_pixel_intensity(const Image *image, const int index);
+bool image_load(Image *image, const char *path, int target_width);
+uint8_t image_get_pixel_intensity(const Image *image, int index);

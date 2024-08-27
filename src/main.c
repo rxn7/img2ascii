@@ -1,12 +1,13 @@
 #include "image.h"
 #include "args.h"
+#include "color.h"
 
 #include <math.h>
 #include <stdio.h>
 
 #define LENGTH(array) (sizeof(array) / sizeof(array[0]))
 
-const char characters[] = { ' ', '.', ',', ':', ';', '!', '?', '#', };
+const char characters[] = { '.', ',', ':', ';', '!', '?', '#', '@' };
 
 static void get_rgb(const Image *image, const size_t idx, uint8_t *r, uint8_t *g, uint8_t *b) {
 	*r = image->data[idx * image->channels + 0];
@@ -20,14 +21,20 @@ static void print_true_color(const char character, const Image *image, const siz
 	printf("\033[38;2;%d;%d;%dm%c\033[0m", r, g, b, character);
 }
 
+static void print_ansi_256(const char character, const Image *image, const size_t idx) {
+	uint8_t r,g,b;
+	get_rgb(image, idx, &r, &g, &b);
+
+	uint8_t ansi_color = rgb_to_ansi(r, g, b);
+
+	printf("\033[38;5;%dm%c\033[0m", ansi_color, character);
+}
+
 int main(const int argc, const char *argv[]) {
-	if(argc < 2) {
-		fprintf(stderr, "Usage: %s <input image>\n", argv[0]);
+	Settings settings; 
+	if(!settings_init(&settings, argc, argv)) {
 		return 1;
 	}
-
-	Settings settings; 
-	settings_init(&settings, argc, argv);
 	
 	Image image;
 	if(!image_load(&image, settings.image_path, settings.target_width)) {
@@ -54,8 +61,7 @@ int main(const int argc, const char *argv[]) {
 						break;
 
 					case Ansi256:
-						// TODO:
-						putchar(character);
+						print_ansi_256(character, &image, idx);
 						break;
 				}
 			}
