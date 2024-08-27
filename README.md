@@ -4,7 +4,7 @@ Convert images to ASCII art in your terminal!
 # usage
 img2ascii -path "path_to_image"
 
-## Arguments
+## arguments
 - `-help` - show help
 - `-path` - path to image
 - `-width` - set output width
@@ -14,7 +14,7 @@ img2ascii -path "path_to_image"
 - `-verbose` - show more info
 
 # install
-```git clone https://github.com/rxn/img2ascii.git```
-```cd img2ascii```
-```./configure.sh```
-```./install.sh```
+```git clone https://github.com/rxn/img2ascii.git```  
+```cd img2ascii```  
+```./configure.sh```  
+```./install.sh```  
