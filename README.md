@@ -5,6 +5,9 @@ Convert images to ASCII art in your terminal!
 img2ascii -path "path_to_image"
 
 # examples
+![image](https://github.com/user-attachments/assets/174d32bb-302b-4753-853d-b9911b6e17fa)  
+![image](https://github.com/user-attachments/assets/b6d1b5f1-5180-497d-a700-717e966ce824)
+
 
 
 ## arguments
