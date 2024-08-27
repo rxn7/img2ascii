@@ -24,3 +24,6 @@ img2ascii -path "path_to_image"
 ```cd img2ascii```  
 ```./configure.sh```  
 ```./install.sh```  
+
+# todo
+- for some reason -width 1024 is cooked

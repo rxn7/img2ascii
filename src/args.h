@@ -15,6 +15,7 @@ typedef struct Arguments {
 	uint8_t target_width;
 	ColorType color_type;
 	bool verbose;
+	bool background;
 } Arguments;
 
 bool args_init(Arguments *args, int argc, const char *argv[]);
