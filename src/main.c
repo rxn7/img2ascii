@@ -31,16 +31,16 @@ static void print_true_color_background(const Image *image, const size_t idx) {
 static void print_ansi_256(const char character, const Image *image, const size_t idx) {
 	uint8_t r,g,b;
 	get_rgb(image, idx, &r, &g, &b);
-	uint8_t ansi_color = rgb_to_ansi(r, g, b);
 
+	const uint8_t ansi_color = rgb_to_ansi(r, g, b);
 	printf("\033[48;5;%dm%c\033[0m", ansi_color, character); 
 }
 
 static void print_ansi_256_background(const Image *image, const size_t idx) {
 	uint8_t r,g,b;
 	get_rgb(image, idx, &r, &g, &b);
-	uint8_t ansi_color = rgb_to_ansi(r, g, b);
 
+	const uint8_t ansi_color = rgb_to_ansi(r, g, b);
 	printf("\033[48;5;%dm \033[0m", ansi_color); 
 }
 
